@@ -1,5 +1,5 @@
 name: s_bounceable
-description: A Flutter package for s_bounceable functionality
+description: A Flutter widget providing bounceable animations with intelligent single and double tap detection support.
 issue_tracker: https://github.com/SoundSliced/s_bounceable/issues
 repository: https://github.com/SoundSliced/s_bounceable
 version: 1.0.0

@@ -1,7 +1,13 @@
 ## 1.0.0
 
-* Version 1.0.0
+* Initial stable release
+* Added `SBounceable` widget with single and double tap support
+* Integrated with `flutter_bounceable` for smooth scale animations
+* Customizable scale factor for bounce effect
+* Smart tap detection with configurable double-tap threshold (300ms)
+* Comprehensive test coverage
+* Complete example application
 
 ## 0.0.1
 
-* Initial release
+* Initial development release
