@@ -1,0 +1,22 @@
+name: s_bounceable
+description: A Flutter package for s_bounceable functionality
+issue_tracker: https://github.com/SoundSliced/s_bounceable/issues
+repository: https://github.com/SoundSliced/s_bounceable
+version: 1.0.0
+homepage: https://github.com/SoundSliced/s_bounceable
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bounceable: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
