@@ -1,3 +1,8 @@
+## 1.1.0
+
+* didUpdateWidget added to Sbounceable to rebuild it when scaleFactor parameter is updated
+* Example upgraded
+
 ## 1.0.0
 
 * Initial stable release

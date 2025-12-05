@@ -23,7 +23,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  s_bounceable: ^1.0.0
+  s_bounceable: ^1.1.0
 ```
 
 Then run:
@@ -98,7 +98,7 @@ SBounceable(
 
 ## Complete Example
 
-See the full working example in the [`example`](example/main.dart) directory:
+See the full working example in the [`example`](example/lib/main.dart) directory:
 
 ```dart
 import 'package:flutter/material.dart';

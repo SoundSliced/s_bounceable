@@ -46,9 +46,15 @@ class _SBounceableState extends State<SBounceable> {
   }
 
   @override
+  void didUpdateWidget(covariant SBounceable oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // No need to call setState here as the widget will rebuild automatically
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Bounceable(
-      key: widget.key,
+      key: ValueKey(widget.scaleFactor ?? 0.95),
       onTap: _handleTap,
       scaleFactor: widget.scaleFactor ?? 0.95,
       child: widget.child,
