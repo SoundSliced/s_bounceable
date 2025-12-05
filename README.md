@@ -17,6 +17,9 @@ A Flutter package providing a bounceable widget with intelligent single and doub
 
 🧪 **Well Tested** - Comprehensive test coverage for reliable behavior
 
+## Demo
+![Demo](https://raw.githubusercontent.com/SoundSliced/s_bounceable/main/example/assets/example.gif)
+
 ## Installation
 
 Add this to your package's `pubspec.yaml` file:
