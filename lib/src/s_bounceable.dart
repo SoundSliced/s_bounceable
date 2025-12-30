@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 /// A Bounceable widget that supports both single tap and double tap
 class SBounceable extends StatefulWidget {
@@ -7,6 +6,8 @@ class SBounceable extends StatefulWidget {
   final VoidCallback? onTap;
   final VoidCallback? onDoubleTap;
   final double? scaleFactor;
+  final Duration? duration;
+  final bool isBounceEnabled;
 
   const SBounceable({
     super.key,
@@ -14,6 +15,8 @@ class SBounceable extends StatefulWidget {
     this.onTap,
     this.onDoubleTap,
     this.scaleFactor,
+    this.duration,
+    this.isBounceEnabled = true,
   });
 
   @override
@@ -21,43 +24,44 @@ class SBounceable extends StatefulWidget {
 }
 
 class _SBounceableState extends State<SBounceable> {
-  DateTime? _lastTapTime;
-  static const Duration _doubleTapThreshold = Duration(milliseconds: 300);
+  double _scale = 1.0;
 
-  void _handleTap() {
-    final now = DateTime.now();
+  double get _scaleFactor => widget.scaleFactor ?? 0.95;
+  Duration get _duration =>
+      widget.duration ?? const Duration(milliseconds: 100);
 
-    if (_lastTapTime != null &&
-        now.difference(_lastTapTime!) < _doubleTapThreshold) {
-      // Double tap detected
-      widget.onDoubleTap?.call();
-      _lastTapTime = null; // Reset to prevent triple tap
-    } else {
-      // Single tap - delay execution to check for double tap
-      _lastTapTime = now;
-      Future.delayed(_doubleTapThreshold, () {
-        if (mounted && _lastTapTime == now) {
-          // No second tap occurred, execute single tap
-          widget.onTap?.call();
-          _lastTapTime = null;
-        }
-      });
-    }
+  void _onTapDown(TapDownDetails details) {
+    setState(() {
+      _scale = _scaleFactor;
+    });
   }
 
-  @override
-  void didUpdateWidget(covariant SBounceable oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    // No need to call setState here as the widget will rebuild automatically
+  void _onTapUp(TapUpDetails details) {
+    setState(() {
+      _scale = 1.0;
+    });
+  }
+
+  void _onTapCancel() {
+    setState(() {
+      _scale = 1.0;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Bounceable(
-      key: ValueKey(widget.scaleFactor ?? 0.95),
-      onTap: _handleTap,
-      scaleFactor: widget.scaleFactor ?? 0.95,
-      child: widget.child,
+    return GestureDetector(
+      onTapDown: _onTapDown,
+      onTapUp: _onTapUp,
+      onTapCancel: _onTapCancel,
+      onTap: widget.onTap,
+      onDoubleTap: widget.onDoubleTap,
+      child: AnimatedScale(
+        scale: widget.isBounceEnabled ? _scale : 1.0,
+        duration: _duration,
+        curve: Curves.easeInOut,
+        child: widget.child,
+      ),
     );
   }
 }

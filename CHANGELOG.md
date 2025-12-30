@@ -1,3 +1,8 @@
+## 2.0.0
+
+* No longer relies on flutter_bounceable package, as it is faulty when wanting to have scaleFactor of 1.0 --> it now uses a combination of GestureDetector and AnimatedScale internally
+* isBounceEnabled param added to override whether to show or not the bounce effect
+
 ## 1.1.0
 
 * didUpdateWidget added to Sbounceable to rebuild it when scaleFactor parameter is updated
