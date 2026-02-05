@@ -1,3 +1,7 @@
+## 2.1.0
+* SBounceable widget now uses Listener with pointer events (onPointerDown, onPointerUp, onPointerCancel) instead of gesture detector's tap events, to activate the scale animation: Pointer events are lower-level and always fire regardless of tap/click pressure
+
+
 ## 2.0.0
 
 * No longer relies on flutter_bounceable package, as it is faulty when wanting to have scaleFactor of 1.0 --> it now uses a combination of GestureDetector and AnimatedScale internally

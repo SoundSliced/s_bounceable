@@ -30,37 +30,45 @@ class _SBounceableState extends State<SBounceable> {
   Duration get _duration =>
       widget.duration ?? const Duration(milliseconds: 100);
 
-  void _onTapDown(TapDownDetails details) {
-    setState(() {
-      _scale = _scaleFactor;
-    });
+  void _onPointerDown(PointerDownEvent event) {
+    if (widget.isBounceEnabled) {
+      setState(() {
+        _scale = _scaleFactor;
+      });
+    }
   }
 
-  void _onTapUp(TapUpDetails details) {
-    setState(() {
-      _scale = 1.0;
-    });
+  void _onPointerUp(PointerUpEvent event) {
+    if (widget.isBounceEnabled) {
+      setState(() {
+        _scale = 1.0;
+      });
+    }
   }
 
-  void _onTapCancel() {
-    setState(() {
-      _scale = 1.0;
-    });
+  void _onPointerCancel(PointerCancelEvent event) {
+    if (widget.isBounceEnabled) {
+      setState(() {
+        _scale = 1.0;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: _onTapDown,
-      onTapUp: _onTapUp,
-      onTapCancel: _onTapCancel,
-      onTap: widget.onTap,
-      onDoubleTap: widget.onDoubleTap,
-      child: AnimatedScale(
-        scale: widget.isBounceEnabled ? _scale : 1.0,
-        duration: _duration,
-        curve: Curves.easeInOut,
-        child: widget.child,
+    return Listener(
+      onPointerDown: _onPointerDown,
+      onPointerUp: _onPointerUp,
+      onPointerCancel: _onPointerCancel,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        onDoubleTap: widget.onDoubleTap,
+        child: AnimatedScale(
+          scale: widget.isBounceEnabled ? _scale : 1.0,
+          duration: _duration,
+          curve: Curves.easeInOut,
+          child: widget.child,
+        ),
       ),
     );
   }
