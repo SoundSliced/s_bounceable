@@ -1,3 +1,10 @@
+## 3.0.0
+- package no longer holds the source code for it, but exports/exposes the `s_packages` package instead, which will hold this package's latest source code.
+- The only future changes to this package will be made via `s_packages` package dependency upgrades, in order to bring the new fixes or changes to this package
+- dependent on `s_packages`: ^1.1.2
+
+
+
 ## 2.1.0
 * SBounceable widget now uses Listener with pointer events (onPointerDown, onPointerUp, onPointerCancel) instead of gesture detector's tap events, to activate the scale animation: Pointer events are lower-level and always fire regardless of tap/click pressure
 

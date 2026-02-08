@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:s_bounceable/s_bounceable.dart';
 
 void main() {
