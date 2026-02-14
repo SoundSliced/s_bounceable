@@ -26,7 +26,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  s_bounceable: ^3.0.0
+  s_bounceable: ^3.1.0
 ```
 
 Then run:
@@ -164,6 +164,9 @@ The `SBounceable` widget uses a smart tap detection algorithm:
 | `onTap` | `VoidCallback?` | No | `null` | Callback for single tap |
 | `onDoubleTap` | `VoidCallback?` | No | `null` | Callback for double tap |
 | `scaleFactor` | `double?` | No | `0.95` | Scale factor for bounce effect (0.0 to 1.0) |
+| `onLongPress` | `VoidCallback?` | No | `null` | Callback for long press |
+| `curve` | `Curve?` | No | `null` | Custom bounce animation curve |
+| `enableHapticFeedback` | `bool` | No | `false` | Enable tactile feedback on tap |
 
 ## Dependencies
 
